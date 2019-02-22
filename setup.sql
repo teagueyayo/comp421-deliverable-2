@@ -1,0 +1,10 @@
+DROP TABLE company;
+DROP TABLE real_estate_firm;
+DROP TABLE management_firm;
+DROP TABLE manager;
+DROP TABLE apt_building;
+DROP TABLE apt_unit;
+DROP TABLE house;
+DROP TABLE listing;
+DROP TABLE agent;
+DROP TABLE customer;
