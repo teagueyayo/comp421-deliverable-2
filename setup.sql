@@ -62,15 +62,15 @@ CREATE TABLE customer (
 
 CREATE TABLE agent (
     name text,
-    company_id integer,
+    company_id integer NOT NULL,
     PRIMARY KEY (name),
     FOREIGN KEY (company_id) REFERENCES real_estate_firm(id)
 );
 
 CREATE TABLE buys (
-        price integer,
+        price integer NOT NULL,
         aname text,
-        csin integer,
+        csin integer NOT NULL,
         laddress text,
         FOREIGN KEY (aname) REFERENCES agent(name),
         FOREIGN KEY (csin) REFERENCES customer(sin),
@@ -78,9 +78,9 @@ CREATE TABLE buys (
 );
 
 CREATE TABLE sells (
-        price integer,
+        price integer NOT NULL,
         aname text,
-        csin integer,
+        csin integer NOT NULL,
         laddress text,
         FOREIGN KEY (aname) REFERENCES agent(name),
         FOREIGN KEY (csin) REFERENCES customer(sin),
