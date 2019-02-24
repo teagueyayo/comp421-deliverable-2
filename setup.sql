@@ -22,14 +22,14 @@ CREATE TABLE company (
 
 CREATE TABLE real_estate_firm (
         brokerage_number integer,
-        id integer,
-        PRIMARY KEY(id)
-);  -- fix inheritance
+        id integer UNIQUE NOT NULL,
+        FOREIGN KEY (id) REFERENCES company(id)
+);
 
 CREATE TABLE management_firm (
-    id integer,
-    PRIMARY KEY (id)
-);  -- fix inheritance
+    id integer UNIQUE NOT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
+);
 
 CREATE TABLE manager (
     name text,
