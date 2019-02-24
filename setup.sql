@@ -77,7 +77,7 @@ CREATE TABLE buys (
         price integer NOT NULL,
         aname text,
         csin integer NOT NULL,
-        laddress text,
+        laddress text NOT NULL,
         FOREIGN KEY (aname) REFERENCES agent(name),
         FOREIGN KEY (csin) REFERENCES customer(sin),
         FOREIGN KEY (laddress) REFERENCES listing(address)
@@ -87,7 +87,7 @@ CREATE TABLE sells (
         price integer NOT NULL,
         aname text,
         csin integer NOT NULL,
-        laddress text,
+        laddress text NOT NULL,
         FOREIGN KEY (aname) REFERENCES agent(name),
         FOREIGN KEY (csin) REFERENCES customer(sin),
         FOREIGN KEY (laddress) REFERENCES listing(address)
