@@ -21,9 +21,9 @@ CREATE TABLE company (
 );
 
 CREATE TABLE real_estate_firm (
-        brokerage_number integer,
-        id integer UNIQUE NOT NULL,
-        FOREIGN KEY (id) REFERENCES company(id)
+    brokerage_number integer,
+    id integer UNIQUE NOT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
 );
 
 CREATE TABLE management_firm (
@@ -78,23 +78,23 @@ CREATE TABLE agent (
 );
 
 CREATE TABLE buys (
-        price integer NOT NULL,
-        aname text,
-        csin integer NOT NULL,
-        laddress text NOT NULL,
-        FOREIGN KEY (aname) REFERENCES agent(name),
-        FOREIGN KEY (csin) REFERENCES customer(sin),
-        FOREIGN KEY (laddress) REFERENCES listing(address)
+    price integer NOT NULL,
+    aname text,
+    csin integer NOT NULL,
+    laddress text NOT NULL,
+    FOREIGN KEY (aname) REFERENCES agent(name),
+    FOREIGN KEY (csin) REFERENCES customer(sin),
+    FOREIGN KEY (laddress) REFERENCES listing(address)
 );
 
 CREATE TABLE sells (
-        price integer NOT NULL,
-        aname text,
-        csin integer NOT NULL,
-        laddress text NOT NULL,
-        FOREIGN KEY (aname) REFERENCES agent(name),
-        FOREIGN KEY (csin) REFERENCES customer(sin),
-        FOREIGN KEY (laddress) REFERENCES listing(address)
+    price integer NOT NULL,
+    aname text,
+    csin integer NOT NULL,
+    laddress text NOT NULL,
+    FOREIGN KEY (aname) REFERENCES agent(name),
+    FOREIGN KEY (csin) REFERENCES customer(sin),
+    FOREIGN KEY (laddress) REFERENCES listing(address)
 );
 
 CREATE TABLE partners (
