@@ -106,5 +106,5 @@ CREATE TABLE managed_by (
     baddress text,
     FOREIGN KEY (mfirm_id) REFERENCES management_firm(id),
     FOREIGN KEY (mname) REFERENCES manager(name),
-    FOREIGN KEY (baddress) REFERENCES building(address)
+    FOREIGN KEY (baddress) REFERENCES apt_building(address)
 );
