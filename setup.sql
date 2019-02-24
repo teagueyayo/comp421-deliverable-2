@@ -52,13 +52,17 @@ CREATE TABLE listing (
 CREATE TABLE apt_unit (
     unit_number integer,
     building text NOT NULL,
-    FOREIGN KEY (building) REFERENCES apt_building(address) -- handles "unit of"
-);  -- fix inheritance
+    address text UNIQUE NOT NULL,
+    FOREIGN KEY (building) REFERENCES apt_building(address), -- handles "unit of"
+    FOREIGN KEY (address) REFERENCES listing(address)
+);
 
 CREATE TABLE house (
     stories integer,
-    lot_size integer
-);  -- fix inheritance
+    lot_size integer,
+    address text UNIQUE NOT NULL,
+    FOREIGN KEY (address) REFERENCES listing(address)
+);
 
 CREATE TABLE customer (
     sin integer,
