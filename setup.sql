@@ -1,3 +1,5 @@
+DROP TABLE buys;
+DROP TABLE sells;
 DROP TABLE manager;
 DROP TABLE apt_building;
 DROP TABLE apt_unit;
@@ -63,4 +65,24 @@ CREATE TABLE agent (
     company_id integer,
     PRIMARY KEY (name),
     FOREIGN KEY (company_id) REFERENCES real_estate_firm(id)
+);
+
+CREATE TABLE buys (
+        price integer,
+        aname text,
+        csin integer,
+        laddress text,
+        FOREIGN KEY (aname) REFERENCES agent(name),
+        FOREIGN KEY (csin) REFERENCES customer(sin),
+        FOREIGN KEY (laddress) REFERENCES listing(address)
+);
+
+CREATE TABLE sells (
+        price integer,
+        aname text,
+        csin integer,
+        laddress text,
+        FOREIGN KEY (aname) REFERENCES agent(name),
+        FOREIGN KEY (csin) REFERENCES customer(sin),
+        FOREIGN KEY (laddress) REFERENCES listing(address)
 );
