@@ -1,17 +1,17 @@
-DROP TABLE buys;
-DROP TABLE sells;
-DROP TABLE partners;
-DROP TABLE managed_by;
-DROP TABLE manager;
-DROP TABLE apt_unit;
-DROP TABLE apt_building;
-DROP TABLE house;
-DROP TABLE listing;
-DROP TABLE agent;
-DROP TABLE customer;
-DROP TABLE real_estate_firm;
-DROP TABLE management_firm;
-DROP TABLE company;
+DROP TABLE IF EXISTS buys;
+DROP TABLE IF EXISTS sells;
+DROP TABLE IF EXISTS partners;
+DROP TABLE IF EXISTS managed_by;
+DROP TABLE IF EXISTS manager;
+DROP TABLE IF EXISTS apt_unit;
+DROP TABLE IF EXISTS apt_building;
+DROP TABLE IF EXISTS house;
+DROP TABLE IF EXISTS listing;
+DROP TABLE IF EXISTS agent;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS real_estate_firm;
+DROP TABLE IF EXISTS management_firm;
+DROP TABLE IF EXISTS company;
 
 CREATE TABLE company (
     id integer,
