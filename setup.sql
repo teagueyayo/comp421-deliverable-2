@@ -18,12 +18,12 @@ CREATE TABLE company (
 
 CREATE TABLE real_estate_firm (
         brokerage_number integer,
-        PRIMARY KEY (id)
-) INHERITS (company);
+        id integer,
+        PRIMARY KEY(id)
+);  -- fix inheritance
 
 CREATE TABLE management_firm (
-    PRIMARY KEY (id)
-) INHERITS (company);
+);  -- fix inheritance
 
 CREATE TABLE manager (
     name text,
@@ -44,15 +44,13 @@ CREATE TABLE listing (
 );
 
 CREATE TABLE apt_unit (
-    unit_number integer,
-    PRIMARY KEY (address)
-) INHERITS (listing);
+    unit_number integer
+);  -- fix inheritance
 
 CREATE TABLE house (
     stories integer,
-    lot_size integer,
-    PRIMARY KEY (address)
-) INHERITS (listing);
+    lot_size integer
+);  -- fix inheritance
 
 CREATE TABLE customer (
     sin integer,
