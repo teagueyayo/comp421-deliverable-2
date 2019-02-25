@@ -107,7 +107,7 @@ CREATE TABLE partners (
 CREATE TABLE managed_by (
     mfirm_id int,
     mname text,
-    baddress text,
+    baddress text UNIQUE,
     FOREIGN KEY (mfirm_id) REFERENCES management_firm(id),
     FOREIGN KEY (mname) REFERENCES manager(name),
     FOREIGN KEY (baddress) REFERENCES apt_building(address)
