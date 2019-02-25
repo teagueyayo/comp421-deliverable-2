@@ -1,0 +1,19 @@
+INSERT INTO real_estate_firm (id, name, address, brokerage_number)
+VALUES ("1", "BPAL", "200 Avenue Laurier O #375", "102"),
+       ("2", "JLL", "1 Place Ville Marie #3838", "293"),
+       ("3", "Allied Properties REIT", "400 Avenue Atlantic", "385");
+
+INSERT INTO manager (name)
+VALUES ("Terrence Gao"),
+       ("Aidon Lebar"),
+       ("Will Guthrie");
+
+INSERT INTO apt_building(address)
+VALUES ("3645 Lorne Avenue"),
+       ("4530 Clark Street"),
+       ("33 Chemin de la Cote-Sainte-Catherine");
+
+INSERT INTO agent(name, company_id)
+VALUES ("Seasy Huang", "1"),
+       ("Patrick Ewing", "2"),
+       ("Clyde Drexler", "3");
