@@ -17,6 +17,6 @@ The password is the same as before.
 
 To set up database from scratch:
 ```
-psql cs421 < setup.sql > setup.log 2>&1
+psql cs421 --echo-all < setup.sql > setup.log 2>&1
 ```
 The password is the same as before.
