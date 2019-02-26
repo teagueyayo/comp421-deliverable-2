@@ -1,17 +1,17 @@
-DROP TABLE buys;
-DROP TABLE sells;
-DROP TABLE partners;
-DROP TABLE managed_by;
-DROP TABLE manager;
-DROP TABLE apt_unit;
-DROP TABLE apt_building;
-DROP TABLE house;
-DROP TABLE listing;
-DROP TABLE agent;
-DROP TABLE customer;
-DROP TABLE real_estate_firm;
-DROP TABLE management_firm;
-DROP TABLE company;
+DROP TABLE IF EXISTS buys;
+DROP TABLE IF EXISTS sells;
+DROP TABLE IF EXISTS partners;
+DROP TABLE IF EXISTS managed_by;
+DROP TABLE IF EXISTS manager;
+DROP TABLE IF EXISTS apt_unit;
+DROP TABLE IF EXISTS apt_building;
+DROP TABLE IF EXISTS house;
+DROP TABLE IF EXISTS listing;
+DROP TABLE IF EXISTS agent;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS real_estate_firm;
+DROP TABLE IF EXISTS management_firm;
+DROP TABLE IF EXISTS company;
 
 CREATE TABLE company (
     id integer,
@@ -21,15 +21,15 @@ CREATE TABLE company (
 );
 
 CREATE TABLE real_estate_firm (
-        brokerage_number integer,
-        id integer,
-        PRIMARY KEY(id)
-);  -- fix inheritance
+    brokerage_number integer,
+    id integer UNIQUE NOT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
+);
 
 CREATE TABLE management_firm (
-    id integer,
-    PRIMARY KEY (id)
-);  -- fix inheritance
+    id integer UNIQUE NOT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
+);
 
 CREATE TABLE manager (
     name text,
@@ -52,13 +52,17 @@ CREATE TABLE listing (
 CREATE TABLE apt_unit (
     unit_number integer,
     building text NOT NULL,
-    FOREIGN KEY (building) REFERENCES apt_building(address) -- handles "unit of"
-);  -- fix inheritance
+    address text UNIQUE NOT NULL,
+    FOREIGN KEY (building) REFERENCES apt_building(address), -- handles "unit of"
+    FOREIGN KEY (address) REFERENCES listing(address)
+);
 
 CREATE TABLE house (
     stories integer,
-    lot_size integer
-);  -- fix inheritance
+    lot_size integer,
+    address text UNIQUE NOT NULL,
+    FOREIGN KEY (address) REFERENCES listing(address)
+);
 
 CREATE TABLE customer (
     sin integer,
@@ -74,23 +78,23 @@ CREATE TABLE agent (
 );
 
 CREATE TABLE buys (
-        price integer NOT NULL,
-        aname text,
-        csin integer NOT NULL,
-        laddress text,
-        FOREIGN KEY (aname) REFERENCES agent(name),
-        FOREIGN KEY (csin) REFERENCES customer(sin),
-        FOREIGN KEY (laddress) REFERENCES listing(address)
+    price integer NOT NULL,
+    aname text,
+    csin integer NOT NULL,
+    laddress text NOT NULL,
+    FOREIGN KEY (aname) REFERENCES agent(name),
+    FOREIGN KEY (csin) REFERENCES customer(sin),
+    FOREIGN KEY (laddress) REFERENCES listing(address)
 );
 
 CREATE TABLE sells (
-        price integer NOT NULL,
-        aname text,
-        csin integer NOT NULL,
-        laddress text,
-        FOREIGN KEY (aname) REFERENCES agent(name),
-        FOREIGN KEY (csin) REFERENCES customer(sin),
-        FOREIGN KEY (laddress) REFERENCES listing(address)
+    price integer NOT NULL,
+    aname text,
+    csin integer NOT NULL,
+    laddress text NOT NULL,
+    FOREIGN KEY (aname) REFERENCES agent(name),
+    FOREIGN KEY (csin) REFERENCES customer(sin),
+    FOREIGN KEY (laddress) REFERENCES listing(address)
 );
 
 CREATE TABLE partners (
@@ -103,7 +107,7 @@ CREATE TABLE partners (
 CREATE TABLE managed_by (
     mfirm_id int,
     mname text,
-    baddress text,
+    baddress text UNIQUE,
     FOREIGN KEY (mfirm_id) REFERENCES management_firm(id),
     FOREIGN KEY (mname) REFERENCES manager(name),
     FOREIGN KEY (baddress) REFERENCES apt_building(address)
