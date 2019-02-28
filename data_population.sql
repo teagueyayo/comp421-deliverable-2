@@ -148,29 +148,9 @@ INSERT INTO apt_building
 	(address)
 VALUES ('606 Apprtment Building St.');
 
-
---Insert listings--
-
-INSERT INTO listing
-	(address, build_date, size, list_price)
-VALUES ('101 Generic Listing St.', '2018-11-13', 1000, 600000);
-
-INSERT INTO listing
-	(address, build_date, size, list_price)
-VALUES ('20 Generic Listing St.', '2018-12-19', 1200, 650000);
-
-INSERT INTO listing
-	(address, build_date, size, list_price)
-VALUES ('3 Generic Listing St.', '2018-10-03', 2000, 1030000);
-
-INSERT INTO listing
-	(address, build_date, size, list_price)
-VALUES ('401 Generic Listing St.', '2017-02-23', 5000, 3500000);
-
-INSERT INTO listing
-	(address, build_date, size, list_price)
-VALUES ('50 Generic Listing St.', '2017-11-26', 400, 300000);
-
+INSERT INTO apt_building
+	(address)
+VALUES ('101 Generic Listing St.');
 
 --Insert apartment units--
 
