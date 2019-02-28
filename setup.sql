@@ -50,7 +50,6 @@ CREATE TABLE listing (
 );
 
 CREATE TABLE apt_unit (
-    unit_number integer,
     building text NOT NULL,
     address text UNIQUE NOT NULL,
     FOREIGN KEY (building) REFERENCES apt_building(address), -- handles "unit of"
