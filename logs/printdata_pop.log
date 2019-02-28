@@ -1,0 +1,137 @@
+SELECT * FROM buys LIMIT 5;
+  price  |    aname    |  csin   |              laddress              
+---------+-------------+---------+------------------------------------
+ 1150000 | Agent Dave  | 2919203 | 404 House Rd.
+  310000 | Agent Josh  | 2919205 | 50 Generic Listing St.
+  349000 | Agent Dave  | 2919609 | 303 Apprtment Building St. App. 1A
+  295000 | Agent Katie | 1023928 | 101 House Rd.
+  389000 | Agent Simon | 2919204 | 303 Apprtment Building St. App. 1A
+(5 rows)
+
+SELECT * FROM sells LIMIT 5;
+  price  |    aname    |  csin   |              laddress              
+---------+-------------+---------+------------------------------------
+  295000 | Agent Simon | 2919204 | 101 House Rd.
+  596000 | Agent Josh  | 2919203 | 101 Generic Listing St.
+  349000 | Agent Katie | 2919205 | 303 Apprtment Building St. App. 1A
+  389000 | Agent Dave  | 1023928 | 303 Apprtment Building St. App. 1A
+ 1150000 | Agent Rome  | 2919609 | 404 House Rd.
+(5 rows)
+
+SELECT * FROM partners LIMIT 5;
+   aname1    |   aname2    
+-------------+-------------
+ Agent Rome  | Agent Dave
+ Agent Simon | Agent Katie
+(2 rows)
+
+SELECT * FROM managed_by LIMIT 5;
+ mfirm_id |         mname          |          baddress          
+----------+------------------------+----------------------------
+       11 | David The King Manager | 303 Apprtment Building St.
+       11 | David The King Manager | 101 Apprtment Building St.
+       12 | Seasy Manager          | 202 Apprtment Building St.
+       13 | Will Manager           | 404 Apprtment Building St.
+       14 | Aidon Manager          | 505 Apprtment Building St.
+(5 rows)
+
+SELECT * FROM manager LIMIT 5;
+          name          
+------------------------
+ Will Manager
+ Aidon Manager
+ Seasy Manager
+ Terry Manager
+ David The King Manager
+(5 rows)
+
+SELECT * FROM apt_unit LIMIT 5;
+          building          |               address                
+----------------------------+--------------------------------------
+ 404 Apprtment Building St. | 404 Apprtment Building St. App. 101
+ 404 Apprtment Building St. | 404 Apprtment Building St. App. 201
+ 303 Apprtment Building St. | 303 Apprtment Building St. App. 1A
+ 505 Apprtment Building St. | 505 Apprtment Building St. App. 32
+ 101 Apprtment Building St. | 101 Apprtment Building St. App. 1101
+(5 rows)
+
+SELECT * FROM apt_building LIMIT 5;
+          address           
+----------------------------
+ 101 Apprtment Building St.
+ 202 Apprtment Building St.
+ 303 Apprtment Building St.
+ 404 Apprtment Building St.
+ 505 Apprtment Building St.
+(5 rows)
+
+SELECT * FROM house LIMIT 5;
+ stories | lot_size |    address    
+---------+----------+---------------
+       2 |     2500 | 202 House Rd.
+       3 |     2700 | 101 House Rd.
+       4 |     7000 | 303 House Rd.
+       4 |     5700 | 404 House Rd.
+       3 |     4100 | 502 House Rd.
+(5 rows)
+
+SELECT * FROM listing LIMIT 5;
+         address         | build_date | size | list_price 
+-------------------------+------------+------+------------
+ 101 Generic Listing St. | 2018-11-13 | 1000 |     600000
+ 20 Generic Listing St.  | 2018-12-19 | 1200 |     650000
+ 3 Generic Listing St.   | 2018-10-03 | 2000 |    1030000
+ 401 Generic Listing St. | 2017-02-23 | 5000 |    3500000
+ 50 Generic Listing St.  | 2017-11-26 |  400 |     300000
+(5 rows)
+
+SELECT * FROM agent LIMIT 5;
+    name     | company_id 
+-------------+------------
+ Agent Rome  |          6
+ Agent Dave  |          7
+ Agent Josh  |          6
+ Agent Simon |          9
+ Agent Katie |          8
+(5 rows)
+
+SELECT * FROM customer LIMIT 5;
+   sin   |      name       
+---------+-----------------
+ 2919203 | Customer Bill
+ 2919204 | Customer Sarah
+ 2919205 | Customer Jean
+ 2919609 | Customer Kate
+ 1023928 | Customer Jordan
+(5 rows)
+
+SELECT * FROM real_estate_firm LIMIT 5;
+ brokerage_number | id 
+------------------+----
+             8838 |  6
+             9392 |  7
+             1023 |  8
+             2302 |  9
+             5304 | 10
+(5 rows)
+
+SELECT * FROM management_firm LIMIT 5;
+ id 
+----
+ 11
+ 12
+ 13
+ 14
+ 15
+(5 rows)
+
+SELECT * FROM company LIMIT 5;
+ id |         name         |     address     
+----+----------------------+-----------------
+  1 | Amazon               | 101 Amazon Rd.
+  2 | Google               | 1 Google St.
+  3 | Not_relevant_company | 322 McGill Lane
+  4 | Apple                | 10 Super Place
+  5 | Facebook             | 666 Normal St.
+(5 rows)
+

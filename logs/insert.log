@@ -1,0 +1,24 @@
+INSERT INTO manager
+	(name)
+VALUES ('David The King Manager');
+INSERT 0 1
+INSERT INTO manager
+	(name)
+VALUES ('Will Manager');
+ERROR:  duplicate key value violates unique constraint "manager_pkey"
+DETAIL:  Key (name)=(Will Manager) already exists.
+INSERT INTO manager
+	(name)
+VALUES ('Aidon Manager');
+ERROR:  duplicate key value violates unique constraint "manager_pkey"
+DETAIL:  Key (name)=(Aidon Manager) already exists.
+INSERT INTO manager
+	(name)
+VALUES ('Seasy Manager');
+ERROR:  duplicate key value violates unique constraint "manager_pkey"
+DETAIL:  Key (name)=(Seasy Manager) already exists.
+INSERT INTO manager
+	(name)
+VALUES ('Terry Manager');
+ERROR:  duplicate key value violates unique constraint "manager_pkey"
+DETAIL:  Key (name)=(Terry Manager) already exists.

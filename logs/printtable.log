@@ -1,0 +1,177 @@
+\d buys;
+     Table "cs421g41.buys"
+  Column  |  Type   | Modifiers 
+----------+---------+-----------
+ price    | integer | not null
+ aname    | text    | 
+ csin     | integer | not null
+ laddress | text    | not null
+Foreign-key constraints:
+    "buys_aname_fkey" FOREIGN KEY (aname) REFERENCES agent(name)
+    "buys_csin_fkey" FOREIGN KEY (csin) REFERENCES customer(sin)
+    "buys_laddress_fkey" FOREIGN KEY (laddress) REFERENCES listing(address)
+
+\d sells;
+     Table "cs421g41.sells"
+  Column  |  Type   | Modifiers 
+----------+---------+-----------
+ price    | integer | not null
+ aname    | text    | 
+ csin     | integer | not null
+ laddress | text    | not null
+Foreign-key constraints:
+    "sells_aname_fkey" FOREIGN KEY (aname) REFERENCES agent(name)
+    "sells_csin_fkey" FOREIGN KEY (csin) REFERENCES customer(sin)
+    "sells_laddress_fkey" FOREIGN KEY (laddress) REFERENCES listing(address)
+
+\d partners;
+ Table "cs421g41.partners"
+ Column | Type | Modifiers 
+--------+------+-----------
+ aname1 | text | not null
+ aname2 | text | not null
+Foreign-key constraints:
+    "partners_aname1_fkey" FOREIGN KEY (aname1) REFERENCES agent(name)
+    "partners_aname2_fkey" FOREIGN KEY (aname2) REFERENCES agent(name)
+
+\d managed_by;
+  Table "cs421g41.managed_by"
+  Column  |  Type   | Modifiers 
+----------+---------+-----------
+ mfirm_id | integer | 
+ mname    | text    | 
+ baddress | text    | 
+Indexes:
+    "managed_by_baddress_key" UNIQUE CONSTRAINT, btree (baddress)
+Foreign-key constraints:
+    "managed_by_baddress_fkey" FOREIGN KEY (baddress) REFERENCES apt_building(address)
+    "managed_by_mfirm_id_fkey" FOREIGN KEY (mfirm_id) REFERENCES management_firm(id)
+    "managed_by_mname_fkey" FOREIGN KEY (mname) REFERENCES manager(name)
+
+\d manager;
+ Table "cs421g41.manager"
+ Column | Type | Modifiers 
+--------+------+-----------
+ name   | text | not null
+Indexes:
+    "manager_pkey" PRIMARY KEY, btree (name)
+Referenced by:
+    TABLE "managed_by" CONSTRAINT "managed_by_mname_fkey" FOREIGN KEY (mname) REFERENCES manager(name)
+
+\d apt_unit;
+  Table "cs421g41.apt_unit"
+  Column  | Type | Modifiers 
+----------+------+-----------
+ building | text | not null
+ address  | text | not null
+Indexes:
+    "apt_unit_address_key" UNIQUE CONSTRAINT, btree (address)
+Foreign-key constraints:
+    "apt_unit_address_fkey" FOREIGN KEY (address) REFERENCES listing(address)
+    "apt_unit_building_fkey" FOREIGN KEY (building) REFERENCES apt_building(address)
+
+\d apt_building;
+Table "cs421g41.apt_building"
+ Column  | Type | Modifiers 
+---------+------+-----------
+ address | text | not null
+Indexes:
+    "apt_building_pkey" PRIMARY KEY, btree (address)
+Referenced by:
+    TABLE "apt_unit" CONSTRAINT "apt_unit_building_fkey" FOREIGN KEY (building) REFERENCES apt_building(address)
+    TABLE "managed_by" CONSTRAINT "managed_by_baddress_fkey" FOREIGN KEY (baddress) REFERENCES apt_building(address)
+
+\d house;
+     Table "cs421g41.house"
+  Column  |  Type   | Modifiers 
+----------+---------+-----------
+ stories  | integer | 
+ lot_size | integer | 
+ address  | text    | not null
+Indexes:
+    "house_address_key" UNIQUE CONSTRAINT, btree (address)
+Foreign-key constraints:
+    "house_address_fkey" FOREIGN KEY (address) REFERENCES listing(address)
+
+\d listing;
+     Table "cs421g41.listing"
+   Column   |  Type   | Modifiers 
+------------+---------+-----------
+ address    | text    | not null
+ build_date | date    | 
+ size       | integer | 
+ list_price | integer | 
+Indexes:
+    "listing_pkey" PRIMARY KEY, btree (address)
+Referenced by:
+    TABLE "apt_unit" CONSTRAINT "apt_unit_address_fkey" FOREIGN KEY (address) REFERENCES listing(address)
+    TABLE "buys" CONSTRAINT "buys_laddress_fkey" FOREIGN KEY (laddress) REFERENCES listing(address)
+    TABLE "house" CONSTRAINT "house_address_fkey" FOREIGN KEY (address) REFERENCES listing(address)
+    TABLE "sells" CONSTRAINT "sells_laddress_fkey" FOREIGN KEY (laddress) REFERENCES listing(address)
+
+\d agent;
+      Table "cs421g41.agent"
+   Column   |  Type   | Modifiers 
+------------+---------+-----------
+ name       | text    | not null
+ company_id | integer | not null
+Indexes:
+    "agent_pkey" PRIMARY KEY, btree (name)
+Foreign-key constraints:
+    "agent_company_id_fkey" FOREIGN KEY (company_id) REFERENCES real_estate_firm(id)
+Referenced by:
+    TABLE "buys" CONSTRAINT "buys_aname_fkey" FOREIGN KEY (aname) REFERENCES agent(name)
+    TABLE "partners" CONSTRAINT "partners_aname1_fkey" FOREIGN KEY (aname1) REFERENCES agent(name)
+    TABLE "partners" CONSTRAINT "partners_aname2_fkey" FOREIGN KEY (aname2) REFERENCES agent(name)
+    TABLE "sells" CONSTRAINT "sells_aname_fkey" FOREIGN KEY (aname) REFERENCES agent(name)
+
+\d customer;
+  Table "cs421g41.customer"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ sin    | integer | not null
+ name   | text    | 
+Indexes:
+    "customer_pkey" PRIMARY KEY, btree (sin)
+Referenced by:
+    TABLE "buys" CONSTRAINT "buys_csin_fkey" FOREIGN KEY (csin) REFERENCES customer(sin)
+    TABLE "sells" CONSTRAINT "sells_csin_fkey" FOREIGN KEY (csin) REFERENCES customer(sin)
+
+\d real_estate_firm;
+   Table "cs421g41.real_estate_firm"
+      Column      |  Type   | Modifiers 
+------------------+---------+-----------
+ brokerage_number | integer | 
+ id               | integer | not null
+Indexes:
+    "real_estate_firm_id_key" UNIQUE CONSTRAINT, btree (id)
+Foreign-key constraints:
+    "real_estate_firm_id_fkey" FOREIGN KEY (id) REFERENCES company(id)
+Referenced by:
+    TABLE "agent" CONSTRAINT "agent_company_id_fkey" FOREIGN KEY (company_id) REFERENCES real_estate_firm(id)
+
+\d management_firm;
+Table "cs421g41.management_firm"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ id     | integer | not null
+Indexes:
+    "management_firm_id_key" UNIQUE CONSTRAINT, btree (id)
+Foreign-key constraints:
+    "management_firm_id_fkey" FOREIGN KEY (id) REFERENCES company(id)
+Referenced by:
+    TABLE "managed_by" CONSTRAINT "managed_by_mfirm_id_fkey" FOREIGN KEY (mfirm_id) REFERENCES management_firm(id)
+
+\d company;
+   Table "cs421g41.company"
+ Column  |  Type   | Modifiers 
+---------+---------+-----------
+ id      | integer | not null
+ name    | text    | 
+ address | text    | 
+Indexes:
+    "company_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "management_firm" CONSTRAINT "management_firm_id_fkey" FOREIGN KEY (id) REFERENCES company(id)
+    TABLE "real_estate_firm" CONSTRAINT "real_estate_firm_id_fkey" FOREIGN KEY (id) REFERENCES company(id)
+

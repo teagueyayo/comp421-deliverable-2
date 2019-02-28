@@ -1,0 +1,142 @@
+OP TABLE IF EXISTS buys;
+ERROR:  syntax error at or near "OP"
+LINE 1: OP TABLE IF EXISTS buys;
+        ^
+DROP TABLE IF EXISTS sells;
+NOTICE:  table "sells" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS partners;
+NOTICE:  table "partners" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS managed_by;
+NOTICE:  table "managed_by" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS manager;
+NOTICE:  table "manager" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS apt_unit;
+NOTICE:  table "apt_unit" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS apt_building;
+NOTICE:  table "apt_building" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS house;
+NOTICE:  table "house" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS listing;
+NOTICE:  table "listing" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS agent;
+NOTICE:  table "agent" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS customer;
+NOTICE:  table "customer" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS real_estate_firm;
+NOTICE:  table "real_estate_firm" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS management_firm;
+NOTICE:  table "management_firm" does not exist, skipping
+DROP TABLE
+DROP TABLE IF EXISTS company;
+NOTICE:  table "company" does not exist, skipping
+DROP TABLE
+CREATE TABLE company (
+    id integer,
+    name text,
+    address text,
+    PRIMARY KEY (id)
+);
+CREATE TABLE
+CREATE TABLE real_estate_firm (
+    brokerage_number integer,
+    id integer UNIQUE NOT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
+);
+CREATE TABLE
+CREATE TABLE management_firm (
+    id integer UNIQUE NOT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
+);
+CREATE TABLE
+CREATE TABLE manager (
+    name text,
+    PRIMARY KEY (name)
+);
+CREATE TABLE
+CREATE TABLE apt_building (
+    address text,
+    PRIMARY KEY (address)
+);
+CREATE TABLE
+CREATE TABLE listing (
+    address text,
+    build_date date,
+    size integer,
+    list_price integer,
+    PRIMARY KEY (address)
+);
+CREATE TABLE
+CREATE TABLE apt_unit (
+    building text NOT NULL,
+    address text UNIQUE NOT NULL,
+    FOREIGN KEY (building) REFERENCES apt_building(address), -- handles "unit of"
+    FOREIGN KEY (address) REFERENCES listing(address)
+);
+CREATE TABLE
+CREATE TABLE house (
+    stories integer,
+    lot_size integer,
+    address text UNIQUE NOT NULL,
+    FOREIGN KEY (address) REFERENCES listing(address)
+);
+CREATE TABLE
+CREATE TABLE customer (
+    sin integer,
+    name text,
+    PRIMARY KEY (sin)
+);
+CREATE TABLE
+CREATE TABLE agent (
+    name text,
+    company_id integer NOT NULL,
+    PRIMARY KEY (name),
+    FOREIGN KEY (company_id) REFERENCES real_estate_firm(id) -- handles "works for"
+);
+CREATE TABLE
+CREATE TABLE buys (
+    price integer NOT NULL,
+    aname text,
+    csin integer NOT NULL,
+    laddress text NOT NULL,
+    FOREIGN KEY (aname) REFERENCES agent(name),
+    FOREIGN KEY (csin) REFERENCES customer(sin),
+    FOREIGN KEY (laddress) REFERENCES listing(address)
+);
+CREATE TABLE
+CREATE TABLE sells (
+    price integer NOT NULL,
+    aname text,
+    csin integer NOT NULL,
+    laddress text NOT NULL,
+    FOREIGN KEY (aname) REFERENCES agent(name),
+    FOREIGN KEY (csin) REFERENCES customer(sin),
+    FOREIGN KEY (laddress) REFERENCES listing(address)
+);
+CREATE TABLE
+CREATE TABLE partners (
+    aname1 text NOT NULL,
+    aname2 text NOT NULL,
+    FOREIGN KEY (aname1) REFERENCES agent(name),
+    FOREIGN KEY (aname2) REFERENCES agent(name)
+);
+CREATE TABLE
+CREATE TABLE managed_by (
+    mfirm_id int,
+    mname text,
+    baddress text UNIQUE,
+    FOREIGN KEY (mfirm_id) REFERENCES management_firm(id),
+    FOREIGN KEY (mname) REFERENCES manager(name),
+    FOREIGN KEY (baddress) REFERENCES apt_building(address)
+);
+CREATE TABLE

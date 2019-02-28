@@ -1,0 +1,10 @@
+SELECT * FROM manager;
+          name          
+------------------------
+ Will Manager
+ Aidon Manager
+ Seasy Manager
+ Terry Manager
+ David The King Manager
+(5 rows)
+
