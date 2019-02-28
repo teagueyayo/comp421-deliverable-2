@@ -266,7 +266,7 @@ VALUES (1150000, 'Agent Dave', 2919203, '404 House Rd.');
 
 INSERT INTO buys
 	(price, aname, csin, laddress)
-VALUES (310000, 'Agent Josh', 2919205, '50 Generic Listing St.');
+VALUES (3450000, 'Agent Josh', 2919205, '303 House Rd.');
 
 INSERT INTO buys
 	(price, aname, csin, laddress)
@@ -289,7 +289,7 @@ VALUES (295000, 'Agent Simon', 2919204, '101 House Rd.');
 
 INSERT INTO sells --Not matching--
 	(price, aname, csin, laddress)
-VALUES (596000, 'Agent Josh', 2919203, '101 Generic Listing St.');
+VALUES (3450000, 'Agent Josh', 2919203, '303 House Rd.');
 
 INSERT INTO sells
 	(price, aname, csin, laddress)

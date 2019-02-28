@@ -19,7 +19,7 @@ GROUP BY aname ORDER BY SUM(price) DESC;
 SELECT C.name, SUM(B.price)
 FROM real_estate_firm F, buys B, agent A, company C
 WHERE (A.company_id = F.id) AND (C.id = A.company_id)
-GROUP BY C.id ORDER BY sum(B.price) DESC;
+GROUP BY C.id ORDER BY SUM(B.price) DESC;
 
 --relations used: managed_by, apt_unit, listing
 --return name of managet of the top 3 most expensive units
