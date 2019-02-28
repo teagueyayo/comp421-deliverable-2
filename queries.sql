@@ -24,3 +24,9 @@ FROM apt_building A, listing L
 WHERE (A.address = L.address)
 ORDER BY L.list_price DESC
 LIMIT 3;
+
+--return all sales from every agent in every company, rolled up by company
+SELECT C.name, B.aname, SUM(B.price)
+FROM real_estate_firm F, buys B, agent A, company C 
+WHERE (A.company_id == F.id) AND (C.id == A.company_id)
+GROUP BY ROLLUP(C.name, B.aname);
