@@ -190,7 +190,7 @@ VALUES ('404 Apprtment Building St.', '404 Apprtment Building St. App. 201');
 
 INSERT INTO listing
 	(address, build_date, size, list_price)
-VALUES ('303 Apprtment Building St. App. 1', '2013-01-02', 1600, 340000);
+VALUES ('303 Apprtment Building St. App. 1A', '2013-01-02', 1600, 340000);
 INSERT INTO apt_unit
 	(building, address)
 VALUES ('303 Apprtment Building St.', '303 Apprtment Building St. App. 1A');
@@ -306,7 +306,7 @@ VALUES (310000, 'Agent Josh', 2919205, '50 Generic Listing St.');
 
 INSERT INTO buys
 	(price, aname, csin, laddress)
-VALUES (349000, 'Agent Dave', 2919609, '303 Apprtment Building St. App. 1');
+VALUES (349000, 'Agent Dave', 2919609, '303 Apprtment Building St. App. 1A');
 
 INSERT INTO buys
 	(price, aname, csin, laddress)
@@ -329,7 +329,7 @@ VALUES (596000, 'Agent Josh', 2919203, '101 Generic Listing St.');
 
 INSERT INTO sells
 	(price, aname, csin, laddress)
-VALUES (349000, 'Agent Katie', 2919205, '303 Apprtment Building St. App. 1');
+VALUES (349000, 'Agent Katie', 2919205, '303 Apprtment Building St. App. 1A');
 
 INSERT INTO sells
 	(price, aname, csin, laddress)
@@ -344,11 +344,11 @@ VALUES (1150000, 'Agent Rome', 2919609, '404 House Rd.');
 
 INSERT INTO partners
 	(aname1, aname2)
-VALUES (Agent Rome, Agent Dave);
+VALUES ('Agent Rome', 'Agent Dave');
 
 INSERT INTO partners
 	(aname1, aname2)
-VALUES (Agent Simon, Agent Katie);
+VALUES ('Agent Simon', 'Agent Katie');
 
 
 --Insert managed by--
@@ -376,6 +376,7 @@ VALUES (14, 'Aidon Manager', '505 Apprtment Building St.');
 INSERT INTO managed_by
 	(mfirm_id, mname, baddress)
 VALUES (15, 'Terry Manager', '606 Apprtment Building St.');
+
 
 
 --ETC--
