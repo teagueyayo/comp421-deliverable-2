@@ -18,7 +18,7 @@ FROM real_estate_firm F, buys B, agent A, company C
 WHERE (A.company_id = F.id) AND (C.id = A.company_id)
 GROUP BY C.id ORDER BY sum(B.price) DESC;
 
---address address of the apt buildings with the top 3 most expensive units
+--return address of the apt buildings with the top 3 most expensive units
 SELECT A.address --TODO fix
 FROM apt_building A, listing L
 WHERE (A.address = L.address)
