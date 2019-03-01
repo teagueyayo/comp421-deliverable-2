@@ -14,3 +14,8 @@ DELETE FROM partners p1 WHERE (p1.aname1, p1.aname2) NOT IN
 	(SELECT a1.name, a2.name FROM agent a1, agent a2
 		WHERE a1.company_id = a2.company_id
 		AND a1.name <> a2.name);
+
+--relations used: managers, managed_by
+--Delete managers who are not managing any buildings
+DELETE FROM manager WHERE name NOT IN
+	(SELECT mname FROM managed_by)
