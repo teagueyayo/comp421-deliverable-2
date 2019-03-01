@@ -312,6 +312,10 @@ VALUES ('Agent Rome', 'Agent Dave');
 
 INSERT INTO partners
 	(aname1, aname2)
+VALUES ('Agent Rome', 'Agent Josh');
+
+INSERT INTO partners
+	(aname1, aname2)
 VALUES ('Agent Simon', 'Agent Katie');
 
 
