@@ -1,45 +1,30 @@
-OP TABLE IF EXISTS buys;
-ERROR:  syntax error at or near "OP"
-LINE 1: OP TABLE IF EXISTS buys;
-        ^
+DROP TABLE IF EXISTS buys;
+DROP TABLE
 DROP TABLE IF EXISTS sells;
-NOTICE:  table "sells" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS partners;
-NOTICE:  table "partners" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS managed_by;
-NOTICE:  table "managed_by" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS manager;
-NOTICE:  table "manager" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS apt_unit;
-NOTICE:  table "apt_unit" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS apt_building;
-NOTICE:  table "apt_building" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS house;
-NOTICE:  table "house" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS listing;
-NOTICE:  table "listing" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS agent;
-NOTICE:  table "agent" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS customer;
-NOTICE:  table "customer" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS real_estate_firm;
-NOTICE:  table "real_estate_firm" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS management_firm;
-NOTICE:  table "management_firm" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS company;
-NOTICE:  table "company" does not exist, skipping
 DROP TABLE
 CREATE TABLE company (
     id integer,
