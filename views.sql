@@ -1,4 +1,4 @@
--- All responses logged in log > Q8_views.log
+-- All responses logged in log > Q7_views.log
 
 -- VIEW 1 ----------------------------------
 -- relations used: company, real_estate_firm
