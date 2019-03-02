@@ -257,6 +257,18 @@ INSERT INTO agent
 	(name, company_id)
 VALUES ('Agent Katie', 8);
 
+INSERT INTO agent
+	(name, company_id)
+VALUES ('Agent Richard', 8);
+
+INSERT INTO agent
+	(name, company_id)
+VALUES ('Agent Sarah', 8);
+
+INSERT INTO agent
+	(name, company_id)
+VALUES ('Agent Mike', 9);
+
 
 --Insert buys--
 
@@ -281,7 +293,7 @@ INSERT INTO buys
 VALUES (389000, 'Agent Simon', 2919204, '303 Apprtment Building St. App. 1A');
 
 
---Insert sells (Should be changed to match all buys?)--
+--Insert sells --
 
 INSERT INTO sells
 	(price, aname, csin, laddress)
