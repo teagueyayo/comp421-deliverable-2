@@ -1,0 +1,58 @@
+CREATE VIEW v_company_not_rsf (cid, cname, caddress)
+AS
+SELECT *
+FROM company C
+WHERE C.id NOT IN (
+   SELECT C.id
+   FROM real_estate_firm R
+   WHERE C.id = R.id
+);
+
+CREATE VIEW
+
+SELECT DISTINCT MB.mfirm_id, MB.mname, V.cname
+FROM v_company_not_rsf V, managed_by MB
+WHERE V.cid = MB.mfirm_id
+GROUP BY MB.mfirm_id, MB.mname, V.cname;
+
+ mfirm_id |         mname          |        cname
+----------+------------------------+----------------------
+       11 | David The King Manager | Cool Management
+       12 | Seasy Manager          | Okay Management
+       13 | Will Manager           | Hillsdale Management
+       14 | Aidon Manager          | Bell Management
+       15 | Terry Manager          | Terrible Management
+(5 rows)
+
+UPDATE v_company_not_rsf
+SET cid = cid + 100
+WHERE cid < 6;
+
+UPDATE 5
+
+CREATE VIEW v_inactive_agents (name, company_id)
+AS
+SELECT A.name, A.company_id
+FROM agent A
+WHERE A.name NOT IN (
+   SELECT S.aname
+   FROM sells S
+   WHERE S.aname = A.name
+);
+
+CREATE VIEW
+
+SELECT V.name, V.company_id, C.name
+FROM v_inactive_agents V, real_estate_firm R, company C
+WHERE V.company_id = R.id AND R.id = C.id;
+     name      | company_id |       name
+---------------+------------+-------------------
+ Agent Richard |          8 | Best Real Estate
+ Agent Sarah   |          8 | Best Real Estate
+ Agent Mike    |          9 | Worst Real Estate
+(3 rows)
+
+UPDATE v_inactive_agents V
+SET company_id = 9;
+
+UPDATE 2
