@@ -72,6 +72,7 @@ CREATE TABLE customer (
 CREATE TABLE agent (
     name text,
     company_id integer NOT NULL,
+    active boolean,
     PRIMARY KEY (name),
     FOREIGN KEY (company_id) REFERENCES real_estate_firm(id) -- handles "works for"
 );

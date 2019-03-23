@@ -238,36 +238,36 @@ VALUES (1023928, 'Customer Jordan');
 --Insert agents--
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Rome', 6);
+	(name, company_id, active)
+VALUES ('Agent Rome', 6, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Dave', 7);
+	(name, company_id, active)
+VALUES ('Agent Dave', 7, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Josh', 6);
+	(name, company_id, active)
+VALUES ('Agent Josh', 6, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Simon', 9);
+	(name, company_id, active)
+VALUES ('Agent Simon', 9, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Katie', 8);
+	(name, company_id, active)
+VALUES ('Agent Katie', 8, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Richard', 8);
+	(name, company_id, active)
+VALUES ('Agent Richard', 8, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Sarah', 8);
+	(name, company_id, active)
+VALUES ('Agent Sarah', 8, true);
 
 INSERT INTO agent
-	(name, company_id)
-VALUES ('Agent Mike', 9);
+	(name, company_id, active)
+VALUES ('Agent Mike', 9, true);
 
 
 --Insert buys--
