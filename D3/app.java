@@ -5,7 +5,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
-import java.util.Date;  
+import java.util.Date;
+import java.util.ArrayList;
 
 public class app{
     static Scanner reader = new Scanner(System.in);
@@ -66,7 +67,52 @@ public class app{
 	    System.err.println("Listing add failed with error \n" + e + ".");
 	}
     }
-    public static void salesPerAgent(){}
+    
+    public static void salesPerAgent(){
+	 try{
+	     String querySQL = "SELECT * FROM agent";
+	     java.sql.ResultSet rs = statement.executeQuery(querySQL);
+	     System.out.println("NUMBER | AGENT NAME | COMPANY");
+	     ArrayList<String> aName = new ArrayList<String>();
+	     ArrayList<Integer> aComp = new ArrayList<Integer>();
+	     int i = 1;
+	     while(rs.next()){
+		 String name = rs.getString(1);
+		 int company = rs.getInt(2);
+		 System.out.println(i + ".  " + name + " " + company);
+		 aName.add(name);
+		 aComp.add(company);
+		 i++;
+	     }
+	     System.out.println("Which Agent would you like to view? (please enter number)");
+	     if(reader.hasNextInt()){
+		 int n = reader.nextInt();
+		 if(n < 1 || n > aName.size()){
+		     throw new java.lang.Exception("Error: Number must be in range.");
+		 }
+		 else{
+		     querySQL = "SELECT price, csin, laddress FROM sells WHERE aname = '" + aName.get(n - 1) + "'";
+		     rs = statement.executeQuery(querySQL);
+		     System.out.println("PRICE | CUSTOMER | ADDRESS");
+		     while(rs.next()){
+			 int price = rs.getInt(1);
+			 int csin = rs.getInt(2);
+			 String address = rs.getString(3);
+			 System.out.println(price + " " + csin + " " + address);
+		     }
+		 }
+	     }
+	     else{
+		 throw new java.lang.Exception("Error: Number must be an integer.");
+	     }
+	     
+	 }
+	 catch(Exception e){
+	     reader.nextLine();
+	     System.err.print("Operation failed with error \n" + e);
+	 }
+	     
+    }
     public static void availableRentals(){}
     public static void registerSale(){}
     public static void main(String args[]) throws SQLException{
@@ -105,7 +151,11 @@ public class app{
 		    addListing();
 		    System.out.println("");
 		}
-		else if(n == 3){}
+		else if(n == 3){
+		     System.out.println("");
+		     salesPerAgent();
+		     System.out.println("");
+		}
 		else if(n == 4){}
 		else if(n == 5){}
 		else{
