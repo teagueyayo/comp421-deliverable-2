@@ -95,8 +95,16 @@ public class app{
 		    System.err.println(n + " is not a valid option. Please enter a new one.");
 		    continue;
 		}
-		if(n == 1){viewUnsold();}
-		else if(n == 2){addListing();}
+		if(n == 1){
+		    System.out.println("");
+		    viewUnsold();
+		    System.out.println("");
+		}
+		else if(n == 2){
+		    System.out.println("");
+		    addListing();
+		    System.out.println("");
+		}
 		else if(n == 3){}
 		else if(n == 4){}
 		else if(n == 5){}
@@ -111,26 +119,5 @@ public class app{
 	    }
 	}
 	reader.close();
-
-	// try{
-	//     String querySQL = "SELECT * FROM agent";
-	//     System.out.println(querySQL);
-	//     java.sql.ResultSet rs = statement.executeQuery(querySQL);
-	//     while (rs.next()){
-	// 	int id = rs.getInt(2);
-	// 	String name = rs.getString(1);
-	// 	boolean active = rs.getBoolean(3);
-	// 	System.out.println("id: " + id);
-	// 	System.out.println("name: " + name);
-	// 	System.out.println("active: " + active);
-	// 	    }
-	//     System.out.println("DONE");
-	// }
-	// catch(SQLException e){
-	//     sqlCode = e.getErrorCode();
-	//     sqlState = e.getSQLState();
-        
-	//     System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
-	// }
     }
 }
