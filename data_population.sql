@@ -19,7 +19,6 @@ INSERT INTO company
 	(id, name, address)
 VALUES (5, 'Facebook', '666 Normal St.' );
 
-
 --Insert real estate companies--
 
 INSERT INTO company
@@ -60,6 +59,7 @@ VALUES (10, 'Jump Real Estate', '2003 Elm Rd.');
 INSERT INTO real_estate_firm
 	(brokerage_number, id)
 VALUES ('5304', 10);
+
 
 --Insert management firms--
 
@@ -211,6 +211,27 @@ INSERT INTO house
 	(stories, lot_size, address)
 VALUES (3, 4100, '502 House Rd.');
 
+INSERT INTO listing
+	(address, build_date, size, list_price)
+VALUES ('2 Rich Millionaire Road', '1902-01-01', 6000, 2000000);
+INSERT INTO house
+	(stories, lot_size, address)
+VALUES (5, 30000, '2 Rich Millionaire Road');
+
+INSERT INTO listing
+	(address, build_date, size, list_price)
+VALUES ('3 Rich Millionaire Road', '1901-01-01', 6350, 3000000);
+INSERT INTO house
+	(stories, lot_size, address)
+VALUES (5, 32000, '3 Rich Millionaire Road');
+
+INSERT INTO listing
+	(address, build_date, size, list_price)
+VALUES ('8 Rich Millionaire Road', '1900-01-01', 8000, 7000000);
+INSERT INTO house
+	(stories, lot_size, address)
+VALUES (5, 40000, '8 Rich Millionaire Road');
+
 
 --Insert customers--
 
@@ -233,6 +254,11 @@ VALUES (2919609, 'Customer Kate');
 INSERT INTO customer
 	(sin, name)
 VALUES (1023928, 'Customer Jordan');
+
+INSERT INTO customer
+	(sin, name)
+VALUES (3821010, 'Customer Bowsette');
+-- Let's just say Bowsette owns half of Rich Millionaire Street
 
 
 --Insert agents--
@@ -301,7 +327,9 @@ VALUES (295000, 'Agent Simon', 2919204, '101 House Rd.');
 
 INSERT INTO sells --Not matching--
 	(price, aname, csin, laddress)
-VALUES (3450000, 'Agent Josh', 2919203, '303 House Rd.');
+VALUES (345000, 'Agent Josh', 2919203, '303 House Rd.');
+
+-- Agent Katie also makes bank
 
 INSERT INTO sells
 	(price, aname, csin, laddress)
@@ -309,11 +337,36 @@ VALUES (349000, 'Agent Katie', 2919205, '303 Apprtment Building St. App. 1A');
 
 INSERT INTO sells
 	(price, aname, csin, laddress)
+VALUES (2000000, 'Agent Katie', 3821010, '2 Rich Millionaire Road');
+
+INSERT INTO sells
+	(price, aname, csin, laddress)
+VALUES (3000000, 'Agent Katie', 3821010, '3 Rich Millionaire Road');
+
+-- Agent dave is also a baller
+
+INSERT INTO sells
+	(price, aname, csin, laddress)
 VALUES (389000, 'Agent Dave', 1023928, '303 Apprtment Building St. App. 1A');
 
 INSERT INTO sells
 	(price, aname, csin, laddress)
+VALUES (8000000, 'Agent Dave', 3821010, '8 Rich Millionaire Road');
+
+-- Customer Kate and Jordan buy and sell a house back and forth
+-- making Agent Rome tons of cash
+
+INSERT INTO sells
+	(price, aname, csin, laddress)
 VALUES (1150000, 'Agent Rome', 2919609, '404 House Rd.');
+
+INSERT INTO sells
+	(price, aname, csin, laddress)
+VALUES (1200000, 'Agent Rome', 1023928, '404 House Rd.');
+
+INSERT INTO sells
+	(price, aname, csin, laddress)
+VALUES (1300000, 'Agent Rome', 2919609, '404 House Rd.');
 
 
 --Insert partners--
